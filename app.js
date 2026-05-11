@@ -1,39 +1,40 @@
 const express = require("express");
-const sequelize = require("./config/database");
 const cors = require("cors");
-require("dotenv").config(); // Pastikan dotenv dipanggil di paling atas
+require("dotenv").config();
 
-const notesRouter = require("./routes/notesRoute"); 
+const sequelize = require("./config/database");
+const notesRouter = require("./routes/notesRouter");
 
 const app = express();
 
-// Middleware
-app.use(cors({
-  origin: ['http://localhost', 'http://localhost:5173', 'http://127.0.0.1:5500'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true 
-}));
+app.use(cors());
+
 app.use(express.json());
 
-// Route Health Check
+app.use(express.urlencoded({ extended: true }));
+
+// Test route
 app.get("/", (req, res) => {
-  res.send("API Notes is Running...");
+  res.json({
+    message: "API Notes berjalan",
+  });
 });
 
-// Routing Utama
-// Alamat: http://localhost:3000/api/v1/notes
-app.use("/api/v1/notes", notesRouter); 
+// Notes route
+app.use("/notes", notesRouter);
 
 const PORT = process.env.PORT || 3000;
 
-// Sinkronisasi DB dan Jalankan Server
-sequelize.sync()
+// Sinkron database
+sequelize
+  .sync()
   .then(() => {
+    console.log("Database sinkron");
+
     app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-      console.log(`Endpoint: http://localhost:${PORT}/api/v1/notes`);
+      console.log(`Server berjalan di port ${PORT}`);
     });
   })
-  .catch(err => {
-    console.error("Gagal sinkronisasi database:", err);
+  .catch((error) => {
+    console.log(error);
   });
