@@ -26,4 +26,4 @@ const Notes = sequelize.define("Notes", {
     freezeTableName: true    
 });
 
-module.exports = Notes;
+module.exports = Notes;    
