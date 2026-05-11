@@ -1,81 +1,19 @@
 {
-  "name": "notes-app-backend",
+  "name": "notes-api",
   "version": "1.0.0",
-  "description": "Notes App Fullstack (Express + Sequelize + MySQL)",
-  "main": "apTugas 3 – Deployment Aplikasi Notes ke App Engine dan Cloud Run
-Format pengumpulan: NIM_Tugas3.pdf
-Deskripsi:
-Pada tugas ini, mahasiswa diminta untuk melanjutkan aplikasi Notes dari Tugas 2 dan melakukan deployment menggunakan layanan Platform as a Service (PaaS) pada Google Cloud Platform, yaitu App Engine dan Cloud Run.
-Aplikasi menggunakan Express.js sebagai backend, MySQL sebagai database, dan frontend boleh menggunakan framework atau library seperti React, Vue, Angular, atau teknologi frontend lain yang sesuai.
-Ketentuan Aplikasi:
-Gunakan aplikasi Notes dari Tugas 2 sebagai dasar pengerjaan.
-Backend tetap menggunakan Express.js (Node.js).
-Frontend boleh menggunakan framework atau library frontend.
-Database menggunakan MySQL yang sudah disediakan.
-Aplikasi minimal tetap memiliki fitur:Tambah catatan
-Lihat daftar catatan
-Edit catatan
-Hapus catatan
-Database MySQL:
-Gunakan database MySQL berikut:Host: 34.172.113.167
-Username: admin
-Password: mypassword
-Akses database melalui https://phpmyadmin.co/.
-Buat database masing-masing dengan format nama:notes_NIM
-Contoh: notes_123456789
-Gunakan hanya database milik sendiri.
-Peringatan Penggunaan Database:
-JANGAN ANEH-ANEH. Database ini dapat diakses oleh banyak orang.
-Dilarang menghapus, mengubah, atau menggunakan database milik mahasiswa lain.
-Dilarang mengganti password, membuat user baru, atau mengubah konfigurasi server database.
-Dilarang menyimpan data sensitif, data pribadi, atau konten yang tidak berhubungan dengan tugas.
-Penyalahgunaan akses database akan mempengaruhi penilaian.
-Ketentuan Deployment:
-Frontend dan backend wajib dideploy sebagai dua service yang berbeda.
-Gunakan salah satu skenario berikut:Skenario 1: Backend Express.js di App Engine, frontend di Cloud Run.
-Skenario 2: Backend Express.js di Cloud Run, frontend di App Engine.
-Tidak boleh mendeploy frontend dan backend menjadi satu aplikasi yang sama.
-Frontend wajib terhubung ke backend menggunakan URL publik backend.
-Backend wajib terhubung ke database MySQL yang disediakan.
-Frontend dan backend harus dapat diakses melalui URL publik dari Google Cloud.
-Pengujian:
-Uji backend menggunakan REST API client atau Postman.
-Uji frontend melalui browser menggunakan URL publik hasil deployment.
-Pastikan frontend dapat melakukan tambah, lihat, edit, dan hapus catatan melalui backend.
-Pastikan data hasil CRUD tersimpan pada database MySQL yang disediakan.
-Dokumentasi yang Dikumpulkan:
-Penjelasan singkat aplikasi dari Tugas 2.
-Penjelasan teknologi frontend yang digunakan.
-Penjelasan skenario deployment yang dipilih.
-Screenshot database yang dibuat di phpMyAdmin.
-Screenshot file konfigurasi deployment:app.yaml untuk service yang dideploy ke App Engine
-Dockerfile untuk service yang dideploy ke Cloud Run
-Screenshot proses deployment ke App Engine.
-Screenshot service berhasil diakses melalui URL App Engine.
-Screenshot proses deployment ke Cloud Run.
-Screenshot service berhasil diakses melalui URL Cloud Run.
-Screenshot pengujian endpoint backend menggunakan REST API client atau Postman.
-Screenshot frontend berhasil melakukan CRUD melalui backend.
-Screenshot data CRUD tersimpan pada database MySQL.
-Bonus (Nilai Tambahan):
-Tampilan frontend rapi dan mudah digunakan.
-Dokumentasi deployment jelas dan mudah diikuti.
-Menampilkan perbandingan singkat antara App Engine dan Cloud Run berdasarkan hasil deployment.gp.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "node --watch app.js"
+    "dev": "nodemon app.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.6",
-    "dotenv": "^17.3.1",
-    "express": "^5.2.1",
-    "mysql2": "^3.20.0",
-    "sequelize": "^6.37.8"
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.10.0",
+    "sequelize": "^6.37.3"
   },
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "nodemon": "^3.1.0"
   }
 }
