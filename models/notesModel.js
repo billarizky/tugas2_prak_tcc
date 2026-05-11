@@ -1,29 +1,41 @@
 const Notes = require("../schema/notes");
 
-// Fungsi Create
+// CREATE
 const create = async (notesData) => {
-    return await Notes.create(notesData);
+  return await Notes.create(notesData);
 };
 
-// Fungsi Find All
+// READ ALL
 const findAll = async () => {
-    return await Notes.findAll({
-        attributes: ['id', 'judul', 'isi', 'tanggal_dibuat']
-    });
+  return await Notes.findAll({
+    attributes: ["id", "judul", "isi", "tanggal_dibuat"],
+    order: [["id", "DESC"]],
+  });
 };
 
-// Fungsi Update
+// READ BY ID
+const findById = async (id) => {
+  return await Notes.findByPk(id);
+};
+
+// UPDATE
 const updateById = async (id, notesData) => {
-    return await Notes.update(notesData, {
-        where: { id: id } 
-    });
+  return await Notes.update(notesData, {
+    where: { id },
+  });
 };
 
-// Fungsi Delete 
+// DELETE
 const deleteById = async (id) => {
-    return await Notes.destroy({
-        where: { id: id } 
-    });
+  return await Notes.destroy({
+    where: { id },
+  });
 };
 
-module.exports = { create, findAll, updateById, deleteById };
+module.exports = {
+  create,
+  findAll,
+  findById,
+  updateById,
+  deleteById,
+};
